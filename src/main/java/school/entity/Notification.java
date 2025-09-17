@@ -1,6 +1,6 @@
 package school.entity;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -10,4 +10,12 @@ import lombok.*;
 @Setter
 @Builder(toBuilder = true)
 public class Notification extends BaseEntity{
+    @Column(nullable = false)
+    private String title;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String message;
+    private boolean seen;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id",nullable = false)
+    private UserEntity user;
 }
