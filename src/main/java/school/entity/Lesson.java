@@ -14,16 +14,18 @@ import lombok.*;
 @Builder(toBuilder = true)
 public class Lesson extends BaseEntity{
     @Column(nullable = false, length = 100)
-    private String title;
+    private String subject;
 
-    @Column(length = 500)
-    private String description;
+    @Column(nullable = false, length = 50)
+    private String room;
+
+    @Column(nullable = false, length = 50)
+    private String time;
+
+    @Column(nullable = false, length = 50)
+    private String className;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
+    @JoinColumn(name = "teacher_id", nullable = false)
     private Teacher teacher;
-
-    @ManyToOne
-    @JoinColumn(name = "class_id")
-    private ClassEntity classEntity;
 }
