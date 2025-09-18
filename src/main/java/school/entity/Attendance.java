@@ -10,4 +10,5 @@ import lombok.*;
 @Setter
 @Builder(toBuilder = true)
 public class Attendance extends BaseEntity {
+
 }
