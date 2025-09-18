@@ -9,5 +9,6 @@ import lombok.*;
 @Getter
 @Setter
 @Builder(toBuilder = true)
-public class Student extends BaseEntity{
+public class Student extends UserEntity{
+
 }
