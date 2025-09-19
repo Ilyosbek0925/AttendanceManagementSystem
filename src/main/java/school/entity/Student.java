@@ -4,11 +4,9 @@ import jakarta.persistence.Entity;
 import lombok.*;
 
 @Entity
-@NoArgsConstructor
 @Getter
 @Setter
-
-@Builder(toBuilder = true)
+@AllArgsConstructor
 public class Student extends UserEntity{
 
 }
