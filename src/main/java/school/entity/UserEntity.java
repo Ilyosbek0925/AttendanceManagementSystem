@@ -1,12 +1,13 @@
 package school.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
-import school.enums.Roles;
+import school.enums.Role;
 
-import java.util.Date;
+
 
 @Entity
 @NoArgsConstructor
@@ -16,12 +17,22 @@ import java.util.Date;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 public class UserEntity extends BaseEntity {
+
+    @Column(name = "first_name",nullable = false)
     private String firstName;
-    private String lastName;
+
+    @Column(name = "last_name",nullable = false)
+    private String last_name;
+
+    @Column(name = "email",nullable = false,unique = true)
     private String email;
+
+    @Column(name = "password",nullable = false,unique = true)
     private String password;
-    private Date birthDate;
-    private Roles role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role",nullable = false)
+    private Role role;
 
 
 }
