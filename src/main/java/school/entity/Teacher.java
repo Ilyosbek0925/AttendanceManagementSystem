@@ -9,8 +9,8 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Builder(toBuilder = true)
