@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder(toBuilder = true)
+
 public class Notification extends BaseEntity{
     @Column(nullable = false)
     private String title;

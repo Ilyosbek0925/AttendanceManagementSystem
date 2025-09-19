@@ -4,11 +4,11 @@ import jakarta.persistence.Entity;
 import lombok.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class Attendance extends BaseEntity {
 
 }

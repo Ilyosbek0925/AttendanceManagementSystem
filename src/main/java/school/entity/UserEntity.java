@@ -7,13 +7,17 @@ import jakarta.persistence.Enumerated;
 import lombok.*;
 import school.enums.Role;
 
+
+
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.JOINED)
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class UserEntity extends BaseEntity {
+
     @Column(name = "first_name",nullable = false)
     private String firstName;
 
@@ -29,5 +33,6 @@ public class UserEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role",nullable = false)
     private Role role;
+
 
 }
