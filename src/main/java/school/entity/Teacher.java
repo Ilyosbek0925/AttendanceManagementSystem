@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Getter
 @Setter
 @Builder(toBuilder = true)
