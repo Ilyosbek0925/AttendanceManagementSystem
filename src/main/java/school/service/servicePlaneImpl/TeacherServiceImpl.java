@@ -1,10 +1,10 @@
-package school.service.impl;
+package school.service.servicePlaneImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import school.entity.Teacher;
 import school.repository.TeacherRepository;
-import school.service.TeacherService;
+import school.service.servicePlane.TeacherService;
 
 import java.util.List;
 

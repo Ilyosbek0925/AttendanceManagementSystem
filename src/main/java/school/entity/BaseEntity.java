@@ -16,7 +16,7 @@ import java.util.UUID;
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    UUID uuid;
+    UUID id;
     @CreationTimestamp
     LocalDateTime createdAt;
     @UpdateTimestamp

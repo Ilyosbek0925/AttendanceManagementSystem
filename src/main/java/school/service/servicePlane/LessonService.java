@@ -1,15 +1,16 @@
-package school.service;
+package school.service.servicePlane;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import school.entity.Lesson;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface LessonService {
     Lesson createLesson(Lesson lesson);
-    void deleteLesson(Long id);
+    void deleteLesson(UUID id);
     List<Lesson> getAllLessons();
-    Lesson getLessonById(Long id);
+    Lesson getLessonById(UUID id);
 }

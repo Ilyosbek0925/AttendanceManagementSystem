@@ -6,5 +6,5 @@ import lombok.Data;
 public class LessonRequestDto {
     private String name;
     private String description;
-    private Long teacherId;
+    private String teacherId;
 }

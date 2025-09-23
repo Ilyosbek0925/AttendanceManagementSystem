@@ -1,4 +1,4 @@
-package school.service;
+package school.service.servicePlane;
 
 import school.entity.Teacher;
 

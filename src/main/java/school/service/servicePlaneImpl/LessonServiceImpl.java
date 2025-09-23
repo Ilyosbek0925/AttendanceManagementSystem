@@ -1,12 +1,13 @@
-package school.service.impl;
+package school.service.servicePlaneImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import school.entity.Lesson;
 import school.repository.LessonRepository;
-import school.service.LessonService;
+import school.service.servicePlane.LessonService;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public void deleteLesson(Long id) {
+    public void deleteLesson(UUID id) {
         lessonRepository.deleteById(id);
     }
 
@@ -30,7 +31,7 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public Lesson getLessonById(Long id) {
+    public Lesson getLessonById(UUID id) {
         return lessonRepository.findById(id).orElse(null);
     }
 }

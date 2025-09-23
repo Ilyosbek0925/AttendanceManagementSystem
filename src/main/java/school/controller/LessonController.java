@@ -4,9 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.entity.Lesson;
-import school.service.LessonService;
+import school.service.servicePlane.LessonService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/lesson")
@@ -23,12 +24,12 @@ public class LessonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lesson> getLessonById(@PathVariable Long id) {
+    public ResponseEntity<Lesson> getLessonById(@PathVariable UUID id) {
         return ResponseEntity.ok(lessonService.getLessonById(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLesson(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteLesson(@PathVariable UUID id) {
         lessonService.deleteLesson(id);
         return ResponseEntity.noContent().build();
     }

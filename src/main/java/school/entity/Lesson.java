@@ -14,6 +14,7 @@ import lombok.*;
 @Setter
 @Builder(toBuilder = true)
 public class Lesson extends BaseEntity{
+
     @Column(nullable = false, length = 100)
     private String subject;
 
