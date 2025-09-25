@@ -7,11 +7,13 @@ import jakarta.persistence.OneToOne;
 import lombok.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Builder(toBuilder = true)
 @Getter
 @Setter
-@Builder(toBuilder = true)
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Student extends UserEntity{
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, unique = true)
