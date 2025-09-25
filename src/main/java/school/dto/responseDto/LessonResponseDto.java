@@ -1,13 +1,16 @@
 package school.dto.responseDto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class LessonResponseDto {
     private UUID id;
     private String name;
     private String description;
-    private String teacherFullName;
+    private String teacherFullName; // e.g. "John Doe"
 }

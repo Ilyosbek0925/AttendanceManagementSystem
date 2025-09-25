@@ -1,33 +1,40 @@
 package school.mapper;
 
+import org.springframework.stereotype.Component;
 import school.dto.requestDto.LessonRequestDto;
 import school.dto.responseDto.LessonResponseDto;
 import school.entity.Lesson;
 import school.entity.Teacher;
 
-public interface LessonMapper {
+@Component
+public class LessonMapper {
 
-    static Lesson toEntity(LessonRequestDto dto, Teacher teacher) {
+    public Lesson toEntity(LessonRequestDto dto, Teacher teacher) {
         if (dto == null) return null;
-
         return Lesson.builder()
-                .subject(dto.getName())
-                .className(dto.getDescription())
+                .name(dto.getName())
+                .description(dto.getDescription())
                 .teacher(teacher)
                 .build();
     }
 
-    static LessonResponseDto toResponseDto(Lesson entity) {
+    public LessonResponseDto toDto(Lesson entity) {
         if (entity == null) return null;
 
-        LessonResponseDto dto = new LessonResponseDto();
-        dto.setId(entity.getId());
-        dto.setName(entity.getSubject());
-        dto.setDescription(entity.getClassName());
-        dto.setTeacherFullName(
-                entity.getTeacher() != null ? entity.getTeacher().getFullName() : null
-        );
+        String teacherFullName = null;
+        if (entity.getTeacher() != null) {
+            teacherFullName =
+                    (entity.getTeacher().getFirstName() == null ? "" : entity.getTeacher().getFirstName())
+                            + " "
+                            + (entity.getTeacher().getLastName() == null ? "" : entity.getTeacher().getLastName());
+            teacherFullName = teacherFullName.trim();
+        }
 
-        return dto;
+        return LessonResponseDto.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .description(entity.getDescription())
+                .teacherFullName(teacherFullName)
+                .build();
     }
 }

@@ -1,33 +1,33 @@
 package school.mapper;
 
+import org.springframework.stereotype.Component;
 import school.dto.requestDto.TeacherRequestDto;
 import school.dto.responseDto.TeacherResponseDto;
 import school.entity.Teacher;
 
-public interface TeacherMapper {
+@Component
+public class TeacherMapper {
 
-    static Teacher toEntity(TeacherRequestDto dto) {
-        if (dto == null) return null;
-
+    public Teacher toEntity(TeacherRequestDto dto) {
+        if (dto == null) {
+            return null;
+        }
         return Teacher.builder()
-                .fullName(dto.getFirstName() + " " + dto.getLastName())
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .email(dto.getEmail())
                 .build();
     }
 
-    static TeacherResponseDto toResponseDto(Teacher entity) {
-        if (entity == null) return null;
-
-        TeacherResponseDto dto = new TeacherResponseDto();
-        dto.setId(entity.getId());
-
-        if (entity.getFullName() != null) {
-            String[] parts = entity.getFullName().split(" ", 2);
-            dto.setFirstName(parts.length > 0 ? parts[0] : "");
-            dto.setLastName(parts.length > 1 ? parts[1] : "");
+    public TeacherResponseDto toDto(Teacher teacher) {
+        if (teacher == null) {
+            return null;
         }
-
-        dto.setEmail(null);
-
-        return dto;
+        return TeacherResponseDto.builder()
+                .id(teacher.getId())
+                .firstName(teacher.getFirstName())
+                .lastName(teacher.getLastName())
+                .email(teacher.getEmail())
+                .build();
     }
 }
