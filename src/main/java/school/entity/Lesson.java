@@ -1,32 +1,33 @@
 package school.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.*;
+import java.util.UUID;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Table(name = "lessons")
 @Getter
 @Setter
-@Builder(toBuilder = true)
-public class Lesson extends BaseEntity{
-    @Column(nullable = false, length = 100)
-    private String subject;
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Lesson {
 
-    @Column(nullable = false, length = 50)
-    private String room;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "uuid")
+    private UUID id;
 
-    @Column(nullable = false, length = 50)
-    private String time;
+    @Column(name = "name", nullable = false, length = 150)
+    private String name;
 
-    @Column(nullable = false, length = 50)
-    private String className;
+    @Column(name = "description", columnDefinition = "text")
+    private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 }
