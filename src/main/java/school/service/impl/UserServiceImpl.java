@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         int code = new Random().nextInt(1000, 9000);
         emailService.sendVerificationCode(userDto.getFirstName(), userDto.getMail(), code);
         userRepository.save(userMapper.toEntity(userDto, code));
-        log.info("User successfully created to '{}'", userDto.getUsername());
+        log.info("User successfully created to '{}'", userDto.getMail());
         return ResponseEntity.ok(ApiResponse.builder().message("User successfully created").status(200).data(null).build());
     }
 

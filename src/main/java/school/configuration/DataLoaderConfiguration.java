@@ -15,4 +15,5 @@ public class DataLoaderConfiguration {
     private final PasswordEncoder passwordEncoder;
     @Value("${dataLoader.config}")
     private String dataLoaderStatus;
+
 }

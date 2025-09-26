@@ -27,7 +27,5 @@ public class UserCreateDto {
             message = "Invalid email format"
     )
     private String mail;
-    @NotBlank(message = "your username cannot be empty")
-    private String username;
 
 }

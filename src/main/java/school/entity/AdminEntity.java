@@ -11,6 +11,4 @@ import lombok.*;
 
 @Table(name = "admins")
 public class AdminEntity extends UserEntity {
-    // Agar admin uchun qo‘shimcha fieldlar bo‘lsa shu yerda yozasiz
-    // masalan: private String role;
 }

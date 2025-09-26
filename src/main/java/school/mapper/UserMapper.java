@@ -38,7 +38,6 @@ public class UserMapper {
         userCreateDto.setLastName(user.getLastName());
         userCreateDto.setBirthday(user.getBirthday());
         userCreateDto.setImageUrl(user.getImageUrl());
-        userCreateDto.setUsername(user.getUsername());
         userCreateDto.setMail(user.getMail());
         return userCreateDto;
     }
