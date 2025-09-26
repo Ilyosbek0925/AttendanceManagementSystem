@@ -3,34 +3,38 @@ package school.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import school.entity.Lesson;
-import school.service.LessonService;
+import school.dto.requestDto.LessonRequestDto;
+import school.dto.responseDto.ApiResponse;
+import school.dto.responseDto.LessonResponseDto;
+import school.service.servicePlane.LessonService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("api/lesson")
+@RequestMapping("/api/lessons")
 @RequiredArgsConstructor
 public class LessonController {
     private final LessonService lessonService;
+
     @PostMapping
-    public ResponseEntity<Lesson> createLesson(@RequestBody Lesson lesson) {
-        return ResponseEntity.ok(lessonService.createLesson(lesson));
+    public ResponseEntity<ApiResponse<LessonResponseDto>> createLesson(
+            @RequestBody LessonRequestDto lessonRequestDto) {
+        return ResponseEntity.status(201).body(lessonService.createLesson(lessonRequestDto));
     }
+
     @GetMapping
-    public ResponseEntity<List<Lesson>> getAllLessons() {
+    public ResponseEntity<ApiResponse<List<LessonResponseDto>>> getAllLessons() {
         return ResponseEntity.ok(lessonService.getAllLessons());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lesson> getLessonById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<LessonResponseDto>> getLessonById(@PathVariable UUID id) {
         return ResponseEntity.ok(lessonService.getLessonById(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLesson(@PathVariable Long id) {
-        lessonService.deleteLesson(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<ApiResponse<Void>> deleteLesson(@PathVariable UUID id) {
+        return ResponseEntity.ok(lessonService.deleteLesson(id));
     }
-
 }
