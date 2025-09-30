@@ -29,7 +29,7 @@ public class SecurityConfiguration {
     private final PasswordEncoder passwordEncoder;
 
     private final String[] permitAllUrls= {
-            "/football-pulse/auth/**",
+            "/api/auth/**",
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/swagger-ui.html"

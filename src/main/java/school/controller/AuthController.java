@@ -23,6 +23,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<?>> login(@Valid @RequestBody LoginDto loginDto) {
+        System.out.println("loginga keldi");
         return userService.login(loginDto);
     }
 

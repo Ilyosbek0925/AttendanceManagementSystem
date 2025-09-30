@@ -1,4 +1,4 @@
-package school.service.servicePlane;
+package school.service;
 
 import school.dto.requestDto.TeacherRequestDto;
 import school.dto.responseDto.ApiResponse;

@@ -10,7 +10,7 @@ import school.entity.Teacher;
 import school.mapper.LessonMapper;
 import school.repository.LessonRepository;
 import school.repository.TeacherRepository;
-import school.service.servicePlane.LessonService;
+import school.service.LessonService;
 
 import java.util.List;
 import java.util.UUID;

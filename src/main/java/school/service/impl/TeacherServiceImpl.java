@@ -8,7 +8,7 @@ import school.dto.responseDto.TeacherResponseDto;
 import school.entity.Teacher;
 import school.mapper.TeacherMapper;
 import school.repository.TeacherRepository;
-import school.service.servicePlane.TeacherService;
+import school.service.TeacherService;
 
 import java.util.List;
 import java.util.UUID;

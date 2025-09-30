@@ -39,11 +39,11 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService, UserDetailsService {
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final EmailService emailService;
-    private final JwtTokenService jwtTokenService;
-    private final PasswordEncoder passwordEncoder;
+    protected final UserRepository userRepository;
+    protected final UserMapper userMapper;
+    protected final EmailService emailService;
+    protected final JwtTokenService jwtTokenService;
+    protected final PasswordEncoder passwordEncoder;
 
 
 

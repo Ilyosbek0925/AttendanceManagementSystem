@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ClassController {
 
-    private final ClassService classService;`
+    private final ClassService classService;
 
     @PostMapping("/add")
     public ResponseEntity<ClassResponseDto> create(@RequestBody ClassRequestDto dto) {

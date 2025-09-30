@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import school.dto.requestDto.LessonRequestDto;
 import school.dto.responseDto.ApiResponse;
 import school.dto.responseDto.LessonResponseDto;
-import school.service.servicePlane.LessonService;
+import school.service.LessonService;
 
 import java.util.List;
 import java.util.UUID;

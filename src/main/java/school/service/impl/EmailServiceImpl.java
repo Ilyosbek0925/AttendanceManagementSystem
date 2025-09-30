@@ -14,7 +14,6 @@ import school.util.EmailTemplateBuilder;
 
 import java.security.SecureRandom;
 import java.util.Random;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

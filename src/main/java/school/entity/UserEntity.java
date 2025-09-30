@@ -3,6 +3,7 @@ package school.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,7 @@ import java.util.Collections;
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
-@Builder(toBuilder = true)
+@Builder
 @AllArgsConstructor
 public class UserEntity extends BaseEntity implements UserDetails {
 
@@ -44,8 +45,9 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private Boolean isCredentialsNonExpired;
     private Boolean isEnabled;
 
-    @Override
 
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.toString());
         return Collections.singleton(simpleGrantedAuthority);
