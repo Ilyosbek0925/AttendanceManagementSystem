@@ -19,7 +19,7 @@ public class ClassController {
     private final ClassService classService;
 
     @PostMapping("/add")
-    public ResponseEntity<ClassResponseDto> create(@RequestBody ClassRequestDto dto) {
+    public ResponseEntity< ClassResponseDto > create(@RequestBody ClassRequestDto dto) {
         ClassResponseDto created = classService.create(dto);
         return ResponseEntity.created(URI.create("/api/classes/" + created.getUuid())).body(created);
     }
