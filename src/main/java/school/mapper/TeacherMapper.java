@@ -12,11 +12,12 @@ public class TeacherMapper {
         if (dto == null) {
             return null;
         }
-        return Teacher.builder()
-                .firstName(dto.getFirstName())
-                .lastName(dto.getLastName())
-                .email(dto.getEmail())
-                .build();
+        Teacher teacher = new Teacher();
+        teacher.setFirstName(dto.getFirstName());
+        teacher.setLastName(dto.getLastName());
+        teacher.setMail(dto.getMail());
+        teacher.setBirthday(dto.getBirthday());
+        return teacher;
     }
 
     public TeacherResponseDto toDto(Teacher teacher) {
@@ -27,7 +28,7 @@ public class TeacherMapper {
                 .id(teacher.getId())
                 .firstName(teacher.getFirstName())
                 .lastName(teacher.getLastName())
-                .email(teacher.getEmail())
+                .email(teacher.getMail())
                 .build();
     }
 }

@@ -3,6 +3,7 @@ package school.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
+import school.enums.Period;
 
 import java.time.LocalTime;
 import java.util.UUID;
@@ -15,8 +16,7 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 @Table(name = "time_table")
 public class TimeTable extends BaseEntity{
-
-    private int lessonNumber;
+    private Period lessonNumber;
     private LocalTime startTime;
     private LocalTime endTime;
 

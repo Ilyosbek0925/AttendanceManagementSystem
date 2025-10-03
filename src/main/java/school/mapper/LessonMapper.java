@@ -9,6 +9,8 @@ import school.entity.Teacher;
 @Component
 public class LessonMapper {
 
+    private TeacherMapper teacherMapper;
+
     public Lesson toEntity(LessonRequestDto dto, Teacher teacher) {
         if (dto == null) return null;
         return Lesson.builder()
@@ -20,21 +22,11 @@ public class LessonMapper {
 
     public LessonResponseDto toDto(Lesson entity) {
         if (entity == null) return null;
-
-        String teacherFullName = null;
-        if (entity.getTeacher() != null) {
-            teacherFullName =
-                    (entity.getTeacher().getFirstName() == null ? "" : entity.getTeacher().getFirstName())
-                            + " "
-                            + (entity.getTeacher().getLastName() == null ? "" : entity.getTeacher().getLastName());
-            teacherFullName = teacherFullName.trim();
-        }
-
         return LessonResponseDto.builder()
-                .id(entity.getId())
                 .name(entity.getName())
                 .description(entity.getDescription())
-                .teacherFullName(teacherFullName)
+                .name(entity.getName())
+                .teacherResponseDto(teacherMapper.toDto(entity.getTeacher()))
                 .build();
     }
 }

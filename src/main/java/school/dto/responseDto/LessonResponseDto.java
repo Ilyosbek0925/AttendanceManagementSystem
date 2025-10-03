@@ -12,5 +12,5 @@ public class LessonResponseDto {
     private UUID id;
     private String name;
     private String description;
-    private String teacherFullName; // e.g. "John Doe"
+    private TeacherResponseDto teacherResponseDto;
 }

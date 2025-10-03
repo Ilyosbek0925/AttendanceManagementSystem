@@ -1,6 +1,7 @@
 package school.dto.requestDto;
 
 import lombok.*;
+import school.enums.Role;
 
 @Data
 @NoArgsConstructor
@@ -9,5 +10,7 @@ import lombok.*;
 public class TeacherRequestDto {
     private String firstName;
     private String lastName;
-    private String email;
+    private String mail;
+    private String birthday;
+    private Role role;
 }

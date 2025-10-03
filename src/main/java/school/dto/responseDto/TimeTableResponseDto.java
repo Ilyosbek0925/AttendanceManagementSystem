@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,9 +16,7 @@ import java.util.UUID;
 @Builder
 public class TimeTableResponseDto {
     private UUID uuid;
-    private int lessonNumber;
+    private Period periodNumber;
     private LocalTime startTime;
     private LocalTime endTime;
-    private LocalDateTime created_At;
-    private LocalDateTime updated_At;
 }

@@ -18,7 +18,6 @@ public class ClassResponseDto {
     private String name;
     private String teacher;
     private Integer studentCount;
-    private LocalDateTime created_at;
-    private LocalDateTime updateAt;
+
 
 }
