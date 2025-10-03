@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 @Table(name = "time_table")
 public class TimeTable extends BaseEntity{
-    private Period lessonNumber;
+    private Period period;
     private LocalTime startTime;
     private LocalTime endTime;
 

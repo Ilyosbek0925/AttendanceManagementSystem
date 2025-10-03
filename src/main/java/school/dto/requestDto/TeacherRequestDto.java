@@ -13,4 +13,5 @@ public class TeacherRequestDto {
     private String mail;
     private String birthday;
     private Role role;
+    private String password;
 }

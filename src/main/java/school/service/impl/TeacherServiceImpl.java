@@ -23,8 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public ApiResponse<TeacherResponseDto> createTeacher(TeacherRequestDto dto) {
-        // Optionally check duplicate email
-        teacherRepository.findByEmail(dto.getEmail()).ifPresent(t -> {
+        teacherRepository.findByMail(dto.getMail()).ifPresent(t -> {
             throw new RuntimeException("Teacher with this email already exists");
         });
 

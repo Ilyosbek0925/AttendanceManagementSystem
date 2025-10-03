@@ -6,6 +6,7 @@ import school.dto.requestDto.TimeTableRequestDto;
 import school.dto.responseDto.TimeTableResponseDto;
 import school.entity.TimeTable;
 import school.exception.ResourceNotFoundException;
+import school.mapper.TimeTableMapper;
 import school.repository.TimeTableRepository;
 import school.service.TimeTableService;
 
@@ -20,25 +21,20 @@ public class TimeTableServiceImpl implements TimeTableService {
 
     private final TimeTableRepository repository;
 
+    private final TimeTableMapper mapper;
+
+
     @Override
     public TimeTableResponseDto create(TimeTableRequestDto dto) {
-        TimeTable entity = new TimeTable();
-        entity.setLessonNumber(dto.getLessonNumber());
-        entity.setStartTime(dto.getStartTime());
-        entity.setEndTime(dto.getEndTime());
 
-        TimeTable saved = repository.save(entity);
-        return mapToDto(saved);
+        TimeTable save = repository.save(mapper.toTimeTable(dto));
+        return mapper.toTimeTableResponseDto(save);
     }
 
     @Override
     public List<TimeTableResponseDto> getAll() {
         List<TimeTable> entities = repository.findAll();
-        List<TimeTableResponseDto> dtos = new ArrayList<>();
-        for (TimeTable e : entities) {
-            dtos.add(mapToDto(e));
-        }
-        return dtos;
+        return entities.stream().map(mapper::toTimeTableResponseDto).collect(Collectors.toList());
     }
 
 
@@ -46,35 +42,24 @@ public class TimeTableServiceImpl implements TimeTableService {
     public TimeTableResponseDto getById(UUID id) {
         TimeTable entity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("TimeTable not found"));
-        return mapToDto(entity);
+        return mapper.toTimeTableResponseDto(entity);
     }
 
     @Override
     public TimeTableResponseDto update(UUID id, TimeTableRequestDto dto) {
-        TimeTable entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("TimeTable not found"));
-
-        entity.setLessonNumber(dto.getLessonNumber());
-        entity.setStartTime(dto.getStartTime());
-        entity.setEndTime(dto.getEndTime());
-
-        TimeTable updated = repository.save(entity);
-        return mapToDto(updated);
+        TimeTable timeTable = mapper.toTimeTable(dto);
+        timeTable.setId(id);
+        TimeTable updated = repository.save(timeTable);
+        return mapper.toTimeTableResponseDto(updated);
     }
 
     @Override
     public void delete(UUID id) {
+        if(!repository.existsById(id)){
+           throw new ResourceNotFoundException("TimeTable not found with id " + id);
+        }
         repository.deleteById(id);
     }
 
-    private TimeTableResponseDto mapToDto(TimeTable e) {
-        return new TimeTableResponseDto(
-                e.getId(),
-                e.getLessonNumber(),
-                e.getStartTime(),
-                e.getEndTime(),
-                e.getCreatedAt(),
-                e.getUpdatedAt()
-        );
-    }
+
 }
