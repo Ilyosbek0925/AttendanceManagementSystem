@@ -1,5 +1,8 @@
 package school.service;
 
+import school.dto.requestDto.StudentRequestDto;
+import school.dto.responseDto.ApiResponse;
+import school.dto.responseDto.StudentResponseDto;
 import school.entity.Student;
 
 import java.util.List;
@@ -7,15 +10,16 @@ import java.util.UUID;
 
 public interface StudentService {
 
-    List<Student> getAllStudents();
+    ApiResponse<List<StudentResponseDto>> getAllStudents();
 
-    Student getStudentById(UUID id);
+    ApiResponse<StudentResponseDto> getStudentById(UUID id);
 
-    Student add(Student student);
 
-    Student edit(Student student,UUID uuid);
+    ApiResponse<StudentResponseDto> add(StudentRequestDto student);
 
-    void delete(UUID uuid);
+    ApiResponse<StudentResponseDto> edit(StudentRequestDto student, UUID uuid);
+
+    ApiResponse<Void> delete(UUID uuid);
 
 
 }

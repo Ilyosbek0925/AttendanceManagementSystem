@@ -48,7 +48,6 @@ public class ClassServiceImpl implements ClassService {
         ClassEntity existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Class not found with id: " + id));
         existing.setName(dto.getName());
-        existing.setTeacher(dto.getTeacher());
         existing.setStudentCount(dto.getStudentCount() != null ? dto.getStudentCount() : existing.getStudentCount());
         repository.save(existing);
         return ClassMapper.toDto(existing);

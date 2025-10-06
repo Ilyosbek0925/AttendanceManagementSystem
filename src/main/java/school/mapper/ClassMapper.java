@@ -9,7 +9,6 @@ public class ClassMapper {
         if (dto == null) return null;
         ClassEntity entity = new ClassEntity();
         entity.setName(dto.getName());
-        entity.setTeacher(dto.getTeacher());
         entity.setStudentCount(dto.getStudentCount() != null ? dto.getStudentCount() : 0);
         return entity;
     }
@@ -19,7 +18,6 @@ public class ClassMapper {
         return ClassResponseDto.builder()
                 .uuid(entity.getUuid())
                 .name(entity.getName())
-                .teacher(entity.getTeacher())
                 .studentCount(entity.getStudentCount())
                 .build();
 

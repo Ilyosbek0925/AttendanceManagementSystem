@@ -1,12 +1,17 @@
 package school.mapper;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import school.dto.requestDto.TeacherRequestDto;
 import school.dto.responseDto.TeacherResponseDto;
 import school.entity.Teacher;
 
 @Component
+@RequiredArgsConstructor
 public class TeacherMapper {
+
+    private final PasswordEncoder passwordEncoder;
 
     public Teacher toEntity(TeacherRequestDto dto) {
         if (dto == null) {
@@ -17,6 +22,7 @@ public class TeacherMapper {
         teacher.setLastName(dto.getLastName());
         teacher.setMail(dto.getMail());
         teacher.setBirthday(dto.getBirthday());
+        teacher.setPassword(passwordEncoder.encode(dto.getPassword()));
         return teacher;
     }
 
