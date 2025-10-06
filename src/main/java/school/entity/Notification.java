@@ -3,26 +3,23 @@ package school.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 
-public class Notification extends BaseEntity{
+public class Notification extends BaseEntity {
 
-    @Column(name="sender_name",nullable = false)
-    private String senderName;
-
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserEntity sender;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UserEntity> recipient;
     @Column(nullable = false)
     private String title;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String message;
-    private boolean seen;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id",nullable = false)
-    private UserEntity user;
-    
+
 }
