@@ -9,6 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 public class Student extends UserEntity{
+    //Student entity
     @ManyToOne(fetch = FetchType.LAZY)
     ClassEntity classEntity;
 }
